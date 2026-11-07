@@ -1,18 +1,15 @@
-// Euler_1.cpp : Diese Datei enthält die Funktion "main". Hier beginnt und endet die Ausführung des Programms.
-//
-
 #include <iostream>
 #include <cmath>
 #include <iomanip>
 
 using namespace std;
 
-// Ableitung x' = x / (t + 1)
+// Derivation x' = x / (t + 1)
 static double derivative(double t, double x) {
     return x / (t + 1);
 }
 
-// Euler-Methode (number = Anzahl der kleinen Schritte)
+// Euler Method (number = Number of small steps)
 static double euler(double t_old, double x_old, double step, int number) {
     double temp_x = x_old;
     for (int i = 0; i < number; i++) {
@@ -21,7 +18,7 @@ static double euler(double t_old, double x_old, double step, int number) {
     return temp_x;
 }
 
-// Exakte Lösung des ODE: x' = x/(t+1)
+// Exact solution of the ODE: x' = x/(t+1)
 static double exact_solution(double t, double t0, double x0) {
     double c = -log(t0 + 1) + 1.0 / x0;
     return 1.0 / (c - log(t + 1));
@@ -60,9 +57,9 @@ int main() {
 
         cout << endl;
 
-        // Nächster Schritt
-        x1 = euler(t, x1, h1, 1);  // grober Schritt
-        x2 = euler(t, x2, h2, 2);  // zwei halbe Schritte
+        // Next step
+        x1 = euler(t, x1, h1, 1);  // rough step
+        x2 = euler(t, x2, h2, 2);  // Two half steps
 
         t += step;
     }
